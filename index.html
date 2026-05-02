@@ -130,7 +130,7 @@ textarea{resize:vertical;min-height:80px}
 .cv-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:8px}
 .cv-detect-box{position:absolute;top:18px;left:25px;width:46px;height:62px;border:1.5px solid #22c55e;border-radius:4px;animation:detblink 2s infinite}
 @keyframes detblink{0%,100%{border-color:#22c55e;opacity:1}50%{border-color:#16a34a;opacity:.7}}
-.spindle-indicator{position:absolute;right:16px;top:30px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.light-indicator{position:absolute;right:16px;top:30px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
 
 /* MISC */
 .divider{border:none;border-top:1px solid #f3f4f6;margin:14px 0}
@@ -669,60 +669,81 @@ textarea{resize:vertical;min-height:80px}
   <div class="sec-head">
     <div>
       <div class="sec-title">Computer Vision Monitoring</div>
-      <div class="sec-sub">Capture otomatis setiap 60 detik · Deteksi: kehadiran operator (ada/tidak) & status lampu spindle (🔴 OFF · 🟡 Idle · 🟢 Running)</div>
+      <div class="sec-sub">Capture otomatis setiap 60 detik · Deteksi: kehadiran operator (ada/tidak) & status lampu mesin (🔴 OFF · 🟡 Idle · 🟢 Running)</div>
     </div>
-    <span class="badge b-ok" style="font-size:12px;padding:4px 12px">6 Kamera Aktif</span>
+    <span class="badge b-ok" style="font-size:12px;padding:4px 12px">4 Kamera Aktif</span>
   </div>
   <div class="grid2" style="margin-bottom:16px">
+    
+    <!-- CNC-01 -->
     <div class="cv-dark">
-      <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:#93c5fd">CNC-02 · Live Feed <span style="background:#ef4444;color:#fff;padding:1px 7px;border-radius:20px;font-size:10px;margin-left:6px">ALERT</span></div>
-      <div class="cv-feed">
-        <span>Camera Feed (Simulated)</span>
-        <div class="cv-overlay">
-          <div class="cv-label">Object Detection Active</div>
-          <div class="cv-detect-box"></div>
-          <div class="spindle-indicator" style="background:#ef4444;color:#fff">OFF</div>
-        </div>
-      </div>
-      <div class="gap-col">
-        <div class="row"><span style="font-size:12px;color:#94a3b8;width:130px">Deteksi Operator</span><span style="font-size:12px;color:#22c55e;font-weight:600">✓ Terdeteksi</span></div>
-        <div class="row"><span style="font-size:12px;color:#94a3b8;width:130px">Status Spindle</span><span style="font-size:12px;color:#ef4444;font-weight:600">⬤ Merah — OFF</span></div>
-        <div class="row"><span style="font-size:12px;color:#94a3b8;width:130px">Confidence</span><span style="font-size:12px;color:#e2e8f0">Op: 94% · Lampu: 98%</span></div>
-        <div class="row"><span style="font-size:12px;color:#94a3b8;width:130px">Alert</span><span style="font-size:12px;color:#fbbf24">⚠ Operator ada, mesin mati</span></div>
-      </div>
-    </div>
-    <div class="gap-col">
-      <div class="cv-dark">
         <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#93c5fd">CNC-01 · Live Feed</div>
-        <div class="cv-feed" style="height:90px">
-          <span>Camera Feed (Simulated)</span>
-          <div class="cv-overlay">
-            <div class="cv-label">Object Detection Active</div>
-            <div class="cv-detect-box" style="animation-duration:.9s"></div>
-            <div class="spindle-indicator" style="background:#22c55e;color:#fff">ON</div>
-          </div>
+        <div class="cv-feed" style="height:80px">
+            <span>Camera Feed (Simulated)</span>
+            <div class="cv-overlay">
+                <div class="cv-label">Object Detection Active</div>
+                <div class="cv-detect-box" style="animation-duration:.9s"></div>
+                <div class="light-indicator" style="background:#22c55e;color:#fff">ON</div>
+            </div>
         </div>
         <div style="display:flex;gap:16px;margin-top:8px">
-          <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Operator</span><span style="font-size:11px;color:#22c55e;font-weight:600">✓ Ada</span></div>
-          <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Spindle</span><span style="font-size:11px;color:#22c55e">⬤ Hijau</span></div>
-          <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status</span><span style="font-size:11px;color:#22c55e">Normal ✓</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Operator</span><span style="font-size:11px;color:#22c55e;font-weight:600">✓ Ada (95%)</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status Mesin</span><span style="font-size:11px;color:#22c55e">⬤ Hijau (97%)</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status</span><span style="font-size:11px;color:#22c55e">Normal ✓</span></div>
         </div>
-      </div>
-      <div class="cv-dark">
+    </div>
+
+    <!-- CNC-02 -->
+    <div class="cv-dark">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#93c5fd">CNC-02 · Live Feed <span style="background:#ef4444;color:#fff;padding:1px 7px;border-radius:20px;font-size:10px;margin-left:6px">ALERT</span></div>
+        <div class="cv-feed" style="height:80px">
+            <span>Camera Feed (Simulated)</span>
+            <div class="cv-overlay">
+                <div class="cv-label">Object Detection Active</div>
+                <div class="cv-detect-box"></div>
+                <div class="light-indicator" style="background:#ef4444;color:#fff">ON</div>
+            </div>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:8px">
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Operator</span><span style="font-size:11px;color:#ef4444;font-weight:600">— Tidak Ada (94%)</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status Mesin</span><span style="font-size:11px;color:#22c55e">⬤ Hijau (98%)</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status</span><span style="font-size:11px;color:#fbbf24">⚠ Alert (No Operator)</span></div>
+        </div>
+    </div>
+
+    <!-- TL-01 · Bubut (Idle, tidak ada operator) -->
+    <div class="cv-dark">
         <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#93c5fd">TL-01 · Bubut</div>
         <div class="cv-feed" style="height:80px">
-          <span>Camera Feed (Simulated)</span>
-          <div class="cv-overlay">
-            <div class="cv-label">Detecting...</div>
-            <div class="spindle-indicator" style="background:#eab308;color:#fff">IDL</div>
-          </div>
+            <span>Camera Feed (Simulated)</span>
+            <div class="cv-overlay">
+                <div class="cv-label">Detecting...</div>
+                <div class="light-indicator" style="background:#eab308;color:#fff">IDL</div>
+            </div>
         </div>
         <div style="display:flex;gap:16px;margin-top:8px">
-          <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Operator</span><span style="font-size:11px;color:#94a3b8">— Tidak Ada</span></div>
-          <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Spindle</span><span style="font-size:11px;color:#eab308">⬤ Kuning</span></div>
-          <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status</span><span style="font-size:11px;color:#eab308">Idle</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Operator</span><span style="font-size:11px;color:#ef4444">— Tidak Ada</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status Mesin</span><span style="font-size:11px;color:#eab308">⬤ Kuning</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status</span><span style="font-size:11px;color:#eab308">Idle</span></div>
         </div>
-      </div>
+    </div>
+
+    <!-- TL-02 · Bubut (Idle, tidak ada operator) -->
+    <div class="cv-dark">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#93c5fd">TL-02 · Bubut</div>
+        <div class="cv-feed" style="height:80px">
+            <span>Camera Feed (Simulated)</span>
+            <div class="cv-overlay">
+                <div class="cv-label">Detecting...</div>
+                <div class="light-indicator" style="background:#eab308;color:#fff">ON</div>
+            </div>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:8px">
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Operator</span><span style="font-size:11px;color:#22c55e">✓ Ada (95%)</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status Mesin</span><span style="font-size:11px;color:#22c55e">⬤ Hijau (96%)</span></div>
+            <div class="row" style="gap:5px"><span style="font-size:11px;color:#94a3b8">Status</span><span style="font-size:11px;color:#22c55e">Normal ✓</span></div>
+        </div>
+    </div>
     </div>
   </div>
   <div class="sec-head"><div class="sec-title">Log Anomali Vision Hari Ini</div></div>
@@ -850,7 +871,7 @@ textarea{resize:vertical;min-height:80px}
         <option value="">-- Pilih Mesin --</option>
         <option value="CNC01">CNC Milling 01 - CNC01</option>
         <option value="CNC02">CNC Milling 02 - CNC02</option>
-        <option value="TL01">Bubut (Turning) - TL01</option>
+        <option value="TL01">Bubut (Turning) 01 - TL01</option>
         <option value="TL02">Bubut (Turning) 02 - TL02</option>
         <option value="WC01">Wire Cut EDM - WC01</option>
         <option value="GR01">Grinding - GR01</option>
@@ -866,7 +887,7 @@ textarea{resize:vertical;min-height:80px}
         <option value="">-- Pilih Mesin --</option>
         <option value="CNC01">CNC Milling 01 - CNC01</option>
         <option value="CNC02">CNC Milling 02 - CNC02</option>
-        <option value="TL01">Bubut (Turning) - TL01</option>
+        <option value="TL01">Bubut (Turning) 01 - TL01</option>
         <option value="TL02">Bubut (Turning) 02 - TL02</option>
         <option value="WC01">Wire Cut EDM - WC01</option>
         <option value="GR01">Grinding - GR01</option>
@@ -882,7 +903,7 @@ textarea{resize:vertical;min-height:80px}
         <option value="">-- Pilih Mesin --</option>
         <option value="CNC01">CNC Milling 01 - CNC01</option>
         <option value="CNC02">CNC Milling 02 - CNC02</option>
-        <option value="TL01">Bubut (Turning) - TL01</option>
+        <option value="TL01">Bubut (Turning) 01 - TL01</option>
         <option value="TL02">Bubut (Turning) 02 - TL02</option>
         <option value="WC01">Wire Cut EDM - WC01</option>
         <option value="GR01">Grinding - GR01</option>
@@ -898,7 +919,7 @@ textarea{resize:vertical;min-height:80px}
         <option value="">-- Pilih Mesin --</option>
         <option value="CNC01">CNC Milling 01 - CNC01</option>
         <option value="CNC02">CNC Milling 02 - CNC02</option>
-        <option value="TL01">Bubut (Turning) - TL01</option>
+        <option value="TL01">Bubut (Turning) 01 - TL01</option>
         <option value="TL02">Bubut (Turning) 02 - TL02</option>
         <option value="WC01">Wire Cut EDM - WC01</option>
         <option value="GR01">Grinding - GR01</option>
@@ -954,7 +975,7 @@ textarea{resize:vertical;min-height:80px}
     <div class="modal-head"><div class="modal-title">⚠ Alert — CNC-02</div><button class="close-btn" onclick="closeModal('modal-alert')">×</button></div>
     <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px;margin-bottom:14px">
       <div class="font-600" style="margin-bottom:6px;color:#92400e">Mesin aktif — Operator tidak terdeteksi</div>
-      <div class="text-sm text-sec">Spindle CNC-02 berstatus Hijau (aktif) namun kamera tidak mendeteksi kehadiran operator sejak 14 menit lalu. Sesi otomatis di-pause pada 14:33.</div>
+      <div class="text-sm text-sec">Mesin CNC-02 berstatus Hijau (aktif) namun kamera tidak mendeteksi kehadiran operator sejak 14 menit lalu. Sesi otomatis di-pause pada 14:33.</div>
     </div>
     <div class="gap-col">
       <div class="row"><span class="text-xs text-sec" style="width:80px">Mesin</span><span class="text-sm">CNC-02</span></div>
@@ -983,7 +1004,7 @@ textarea{resize:vertical;min-height:80px}
 const machines = [
   {id:'CNC-01',name:'CNC Milling 01',status:'run',lamp:'green',op:true,order:'ORD-2604-002',prog:55},
   {id:'CNC-02',name:'CNC Milling 02',status:'err',lamp:'green',op:false,order:'ORD-2604-005',prog:30,alert:'Operator tidak terdeteksi!'},
-  {id:'TL-01',name:'Bubut (Turning)',status:'idle',lamp:'yellow',op:false,order:'—',prog:0},
+  {id:'TL-01',name:'Bubut (Turning) 01',status:'idle',lamp:'yellow',op:false,order:'—',prog:0},
   {id:'TL-02',name:'Bubut (Turning) 02',status:'run',lamp:'green',op:true,order:'ORD-2604-006',prog:70},
   {id:'WC-01',name:'Wire Cut EDM',status:'run',lamp:'green',op:true,order:'ORD-2604-007',prog:90},
   {id:'GR-01',name:'Grinding',status:'off',lamp:'grey',op:false,order:'—',prog:0},
