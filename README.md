@@ -153,7 +153,7 @@ flowchart TD
 
 ### Process Plans
 
-* step_number, machine, estimated_hours, status
+* step_number, machine, estimated_minutes, status
 
 ### QR Scans
 
@@ -251,11 +251,11 @@ ProdEye menggunakan layanan cloud untuk:
 | order_id | UUID | FK | Relasi ke order |
 | step_number | INTEGER | NOT NULL | Urutan proses |
 | machine_id | UUID | FK | Mesin |
-| estimated_hours | DECIMAL | NOT NULL | Estimasi waktu |
+| estimated_minutes | DECIMAL | NOT NULL | Estimasi waktu |
 | status | ENUM | NOT NULL | waiting / in_progress / done |
 | started_at | TIMESTAMP | | Waktu mulai |
 | ended_at | TIMESTAMP | | Waktu selesai |
-| actual_hours | DECIMAL | | Durasi aktual |
+| actual_minutes | DECIMAL | | Durasi aktual |
 
 ---
 
